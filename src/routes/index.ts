@@ -1,12 +1,10 @@
 import express from "express";
-import PingController from "../controllers/ping";
-
+import PlayerRouter from './player.router'
+import PlayerController from './../controllers/player.controller';
 const router = express.Router();
 
-router.get("/ping", async (_req, res) => {
-  const controller = new PingController();
-  const response = await controller.getMessage();
-  return res.send(response);
-});
+
+router.use("/players", PlayerRouter)
+
 
 export default router;

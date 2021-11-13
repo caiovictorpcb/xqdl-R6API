@@ -6,14 +6,137 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
-			"PingResponse": {
+			"ActualStats": {
 				"properties": {
-					"message": {
-						"type": "string"
+					"players": {
+						"properties": {
+							"playerId": {
+								"properties": {
+									"losses": {
+										"type": "number",
+										"format": "double"
+									},
+									"region": {
+										"type": "string"
+									},
+									"wins": {
+										"type": "number",
+										"format": "double"
+									},
+									"last_match_result": {
+										"type": "number",
+										"format": "double"
+									},
+									"previous_rank_mmr": {
+										"type": "number",
+										"format": "double"
+									},
+									"mmr": {
+										"type": "number",
+										"format": "double"
+									},
+									"last_match_skill_mean_change": {
+										"type": "number",
+										"format": "double"
+									},
+									"top_rank_position": {
+										"type": "number",
+										"format": "double"
+									},
+									"season": {
+										"type": "number",
+										"format": "double"
+									},
+									"abandons": {
+										"type": "number",
+										"format": "double"
+									},
+									"last_match_mmr_change": {
+										"type": "number",
+										"format": "double"
+									},
+									"update_time": {
+										"type": "string"
+									},
+									"last_match_skill_stdev_change": {
+										"type": "number",
+										"format": "double"
+									},
+									"kills": {
+										"type": "number",
+										"format": "double"
+									},
+									"skill_stdev": {
+										"type": "number",
+										"format": "double"
+									},
+									"board_id": {
+										"type": "string"
+									},
+									"max_rank": {
+										"type": "number",
+										"format": "double"
+									},
+									"rank": {
+										"type": "number",
+										"format": "double"
+									},
+									"next_rank_mmr": {
+										"type": "number",
+										"format": "double"
+									},
+									"profile_id": {
+										"type": "string"
+									},
+									"deaths": {
+										"type": "number",
+										"format": "double"
+									},
+									"skill_mean": {
+										"type": "number",
+										"format": "double"
+									},
+									"max_mmr": {
+										"type": "number",
+										"format": "double"
+									}
+								},
+								"required": [
+									"losses",
+									"region",
+									"wins",
+									"last_match_result",
+									"previous_rank_mmr",
+									"mmr",
+									"last_match_skill_mean_change",
+									"top_rank_position",
+									"season",
+									"abandons",
+									"last_match_mmr_change",
+									"update_time",
+									"last_match_skill_stdev_change",
+									"kills",
+									"skill_stdev",
+									"board_id",
+									"max_rank",
+									"rank",
+									"next_rank_mmr",
+									"profile_id",
+									"deaths",
+									"skill_mean",
+									"max_mmr"
+								],
+								"type": "object"
+							}
+						},
+						"required": [
+							"playerId"
+						],
+						"type": "object"
 					}
 				},
 				"required": [
-					"message"
+					"players"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -31,21 +154,24 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/ping": {
+		"/players": {
 			"get": {
-				"operationId": "GetMessage",
+				"operationId": "GetStats",
 				"responses": {
 					"200": {
 						"description": "Ok",
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/PingResponse"
+									"$ref": "#/components/schemas/ActualStats"
 								}
 							}
 						}
 					}
 				},
+				"tags": [
+					"Player"
+				],
 				"security": [],
 				"parameters": []
 			}
