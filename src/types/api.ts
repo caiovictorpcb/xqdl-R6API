@@ -8,6 +8,13 @@ export interface Player {
 }
 
 
+export enum Platforms {
+  UPLAY  = "uplay",
+  STEAM = "steam",
+  XBOX = 'xbox',
+  PSN = 'psn'
+}
+
 export interface Session{
     appId: string
     spaceId: string

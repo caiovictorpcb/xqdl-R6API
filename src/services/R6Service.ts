@@ -8,9 +8,10 @@ dotenv.config()
 const UbiEmail = process.env.UBI_EMAIL;
 const UbiPassword = process.env.UBI_PASSWORD;
 const UbiPlatform = process.env.UBI_PLATFORM;
+const PlayerPlatform = process.env.UBI_PLATFORM;
 
 const PlayerUsername = 'caio._.';
-const PlayerPlatform = 'uplay'
+
 
 class R6Service {
     
