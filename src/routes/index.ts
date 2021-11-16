@@ -1,10 +1,9 @@
 import express from "express";
-import PlayerRouter from './player.router'
-import PlayerController from './../controllers/player.controller';
+import UsersRouter from './user.router'
 const router = express.Router();
 
 
-router.use("/players", PlayerRouter)
+router.use("/users", UsersRouter)
 
 
 export default router;

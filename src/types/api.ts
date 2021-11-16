@@ -9,10 +9,10 @@ export interface Player {
 
 
 export enum Platforms {
-  UPLAY  = "uplay",
-  STEAM = "steam",
-  XBOX = 'xbox',
-  PSN = 'psn'
+  uplay  = "uplay",
+  steam = "steam",
+  xbox = 'xbox',
+  psn = 'psn'
 }
 
 export interface Session{

@@ -34,6 +34,7 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
+    "@types/mongoose": "^5.11.97",
     "@vince144/r6-api": "^2.2.2",
     "add": "^2.0.6",
     "cors": "^2.8.5",

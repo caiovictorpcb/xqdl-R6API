@@ -6,140 +6,53 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
-			"ActualStats": {
+			"_LeanDocument__LeanDocument_T__": {
+				"properties": {},
+				"type": "object"
+			},
+			"Pick__LeanDocument_T_.Exclude_keyof_LeanDocument_T_.Exclude_keyofDocument._id-or-id-or-__v_-or-%24isSingleNested__": {
 				"properties": {
-					"players": {
-						"properties": {
-							"playerId": {
-								"properties": {
-									"losses": {
-										"type": "number",
-										"format": "double"
-									},
-									"region": {
-										"type": "string"
-									},
-									"wins": {
-										"type": "number",
-										"format": "double"
-									},
-									"last_match_result": {
-										"type": "number",
-										"format": "double"
-									},
-									"previous_rank_mmr": {
-										"type": "number",
-										"format": "double"
-									},
-									"mmr": {
-										"type": "number",
-										"format": "double"
-									},
-									"last_match_skill_mean_change": {
-										"type": "number",
-										"format": "double"
-									},
-									"top_rank_position": {
-										"type": "number",
-										"format": "double"
-									},
-									"season": {
-										"type": "number",
-										"format": "double"
-									},
-									"abandons": {
-										"type": "number",
-										"format": "double"
-									},
-									"last_match_mmr_change": {
-										"type": "number",
-										"format": "double"
-									},
-									"update_time": {
-										"type": "string"
-									},
-									"last_match_skill_stdev_change": {
-										"type": "number",
-										"format": "double"
-									},
-									"kills": {
-										"type": "number",
-										"format": "double"
-									},
-									"skill_stdev": {
-										"type": "number",
-										"format": "double"
-									},
-									"board_id": {
-										"type": "string"
-									},
-									"max_rank": {
-										"type": "number",
-										"format": "double"
-									},
-									"rank": {
-										"type": "number",
-										"format": "double"
-									},
-									"next_rank_mmr": {
-										"type": "number",
-										"format": "double"
-									},
-									"profile_id": {
-										"type": "string"
-									},
-									"deaths": {
-										"type": "number",
-										"format": "double"
-									},
-									"skill_mean": {
-										"type": "number",
-										"format": "double"
-									},
-									"max_mmr": {
-										"type": "number",
-										"format": "double"
-									}
-								},
-								"required": [
-									"losses",
-									"region",
-									"wins",
-									"last_match_result",
-									"previous_rank_mmr",
-									"mmr",
-									"last_match_skill_mean_change",
-									"top_rank_position",
-									"season",
-									"abandons",
-									"last_match_mmr_change",
-									"update_time",
-									"last_match_skill_stdev_change",
-									"kills",
-									"skill_stdev",
-									"board_id",
-									"max_rank",
-									"rank",
-									"next_rank_mmr",
-									"profile_id",
-									"deaths",
-									"skill_mean",
-									"max_mmr"
-								],
-								"type": "object"
-							}
-						},
-						"required": [
-							"playerId"
-						],
-						"type": "object"
+					"_id": {
+						"$ref": "#/components/schemas/_LeanDocument__LeanDocument_T__",
+						"description": "This documents _id."
+					},
+					"__v": {
+						"description": "This documents __v."
+					},
+					"id": {
+						"description": "The string version of this documents _id."
 					}
 				},
-				"required": [
-					"players"
-				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"Omit__LeanDocument_this_.Exclude_keyofDocument._id-or-id-or-__v_-or-%24isSingleNested_": {
+				"$ref": "#/components/schemas/Pick__LeanDocument_T_.Exclude_keyof_LeanDocument_T_.Exclude_keyofDocument._id-or-id-or-__v_-or-%24isSingleNested__",
+				"description": "Construct a type with the properties of T except for those in type K."
+			},
+			"LeanDocument_this_": {
+				"$ref": "#/components/schemas/Omit__LeanDocument_this_.Exclude_keyofDocument._id-or-id-or-__v_-or-%24isSingleNested_"
+			},
+			"Document_any.any.any_": {
+				"$ref": "#/components/schemas/LeanDocument_this_"
+			},
+			"User": {
+				"properties": {
+					"discordId": {
+						"type": "string"
+					},
+					"platform": {
+						"type": "string"
+					},
+					"username": {
+						"type": "string"
+					}
+				},
 				"type": "object",
 				"additionalProperties": false
+			},
+			"ObjectId": {
+				"type": "string"
 			}
 		},
 		"securitySchemes": {}
@@ -154,26 +67,95 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/players": {
+		"/users": {
 			"get": {
-				"operationId": "GetStats",
+				"operationId": "GetUsers",
 				"responses": {
 					"200": {
 						"description": "Ok",
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/ActualStats"
+									"items": {
+										"allOf": [
+											{
+												"$ref": "#/components/schemas/Document_any.any.any_"
+											},
+											{
+												"$ref": "#/components/schemas/User"
+											},
+											{
+												"properties": {
+													"_id": {
+														"$ref": "#/components/schemas/ObjectId"
+													}
+												},
+												"required": [
+													"_id"
+												],
+												"type": "object"
+											}
+										]
+									},
+									"type": "array"
 								}
 							}
 						}
 					}
 				},
 				"tags": [
-					"Player"
+					"User"
 				],
 				"security": [],
 				"parameters": []
+			},
+			"post": {
+				"operationId": "NewUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/Document_any.any.any_"
+										},
+										{
+											"$ref": "#/components/schemas/User"
+										},
+										{
+											"properties": {
+												"_id": {
+													"$ref": "#/components/schemas/ObjectId"
+												}
+											},
+											"required": [
+												"_id"
+											],
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/User"
+							}
+						}
+					}
+				}
 			}
 		}
 	},
