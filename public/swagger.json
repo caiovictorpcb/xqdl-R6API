@@ -44,10 +44,15 @@
 					"platform": {
 						"type": "string"
 					},
-					"username": {
+					"nickname": {
 						"type": "string"
 					}
 				},
+				"required": [
+					"discordId",
+					"platform",
+					"nickname"
+				],
 				"type": "object",
 				"additionalProperties": false
 			},
@@ -156,6 +161,35 @@
 						}
 					}
 				}
+			}
+		},
+		"/users/stats/{discordId}": {
+			"get": {
+				"operationId": "GetUserStats",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "discordId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
 			}
 		}
 	},

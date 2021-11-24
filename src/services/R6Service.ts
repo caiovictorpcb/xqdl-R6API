@@ -8,10 +8,6 @@ dotenv.config()
 const UbiEmail = process.env.UBI_EMAIL;
 const UbiPassword = process.env.UBI_PASSWORD;
 const UbiPlatform = process.env.UBI_PLATFORM;
-const PlayerPlatform = process.env.UBI_PLATFORM;
-
-const PlayerUsername = 'caio._.';
-
 
 class R6Service {
     
@@ -20,14 +16,14 @@ class R6Service {
         return await r6api.createSession(account)
     }
 
-    async getPlayer():Promise<Player | undefined>{
+    async getPlayer(PlayerUsername:string, PlayerPlatform:string):Promise<Player | undefined>{
         const session = await this.createSession()
         if (session) return await r6api.createPlayer(PlayerUsername, PlayerPlatform, session)
         return undefined
     }
     
-    async getStats():Promise<ActualStats | undefined>{
-        const player = await this.getPlayer()
+    async getStats(PlayerUsername:string, PlayerPlatform:string):Promise<ActualStats | undefined>{
+        const player = await this.getPlayer(PlayerUsername, PlayerPlatform)
         const session = await this.createSession()
         if(player && session) return await r6api.getStats(player, session)
         return undefined

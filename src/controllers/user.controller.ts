@@ -8,13 +8,18 @@ import { User } from "../models/user";
 export default class UserController {
   @Get("/")
   public async getUsers(){
-  const repository = new UserRepository();
-  return repository.listUsers()
+    const repository = new UserRepository();
+    return repository.listUsers()
   }
   @Post("/")
   public async newUser(@Body() user: User){
-  const repository = new UserRepository();
-  return repository.newUser(user)
+    const repository = new UserRepository();
+    return repository.newUser(user)
+  }
+  @Get("/stats/:discordId")
+  public async getUserStats(@Path() discordId:string){
+    const repository = new UserRepository();
+    return repository.getUserStats(discordId)
   }
 
 

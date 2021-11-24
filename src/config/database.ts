@@ -1,12 +1,21 @@
 import {MongoClient} from 'mongodb'
 import mongoose, { connect } from 'mongoose'
+import dotenv from 'dotenv'
+dotenv.config()
 
-const uri = "mongodb+srv://CaioVictor:C%40iovi02391@cluster0.7vczx.mongodb.net/r6ApiDB?retryWrites=true&w=majority";
+
+
+
+const URI = process.env.DATABASE_URI;
 
 
 
 
 export const CreateConnection = async () => {
-  
-  return await connect(uri).catch(e => console.log(e))
+  if(URI){
+    return await connect(URI).catch(e => console.log(e))
+  }
+  else{
+    return console.log("ESQUECEU O .ENV ein")
+  }
 }
