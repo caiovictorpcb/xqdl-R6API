@@ -23,5 +23,11 @@ router.get("/stats/:discordId", async (_req, res) => {
   return res.send(response)
 });
 
+router.post("/delete", async (_req, res) => {
+  const controller = new UserController();
+  const response = await controller.deleteUser(_req.body.discordId)
+  return res.status(200).send("Ok")
+});
+
 
 export default router;

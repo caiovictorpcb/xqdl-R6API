@@ -9,7 +9,7 @@ const API_KEY = process.env.API_KEY;
 class ApiService {
 
     async getGenericStats(username:string, platform:string){
-        const url = encodeURI(`https://api2.r6stats.com/public-api/stats/${username}/pc/generic`)
+        const url = `https://api2.r6stats.com/public-api/stats/${username}/${platform}/generic`
         const { data } = await axios.get(url, {
             headers: {
             Authorization: `Bearer ${API_KEY}`,
@@ -17,6 +17,6 @@ class ApiService {
         })
         return data
 }}
-
+        
 
 export default new ApiService();

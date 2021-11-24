@@ -18,6 +18,10 @@ class UserRepository {
         const user = await UserModel.findOne({discordId})
         if(user) return await ApiService.getGenericStats(user.nickname, user.platform);
     }
+    async deleteUser(discordId:string){
+        const deleted = await UserModel.findOneAndDelete({discordId})
+        return deleted
+    }
 }
 
 export default UserRepository;

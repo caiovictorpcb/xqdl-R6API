@@ -21,6 +21,11 @@ export default class UserController {
     const repository = new UserRepository();
     return repository.getUserStats(discordId)
   }
+  @Post("/delete")
+  public async deleteUser(@Body() discordId:string){
+    const repository = new UserRepository();
+    return repository.deleteUser(discordId)
+  }
 
 
 }
